@@ -2,7 +2,8 @@ import { BaseEmployee} from "../classes/BaseEmployee";
 import { Developer} from "../classes/Developer";
 import { Manager} from "../classes/Manager";
 import { ApiService } from "./Apiservice";
-import type { User} from "../interface/types";
+import { Department, type User } from "../interface/types";
+
 
 export class EmployeeService {
      private employees: BaseEmployee[] = [];
@@ -18,11 +19,11 @@ export class EmployeeService {
       const users: User[] = await this.apiService.getUsers();
 
       if (users.length >= 3) {
-        const dev11 = new Developer(1, users[0].name, users[0].age);
-        const dev22 = new Developer(2, users[1].name, users[1].age);
-        const manager = new Manager(3, users[2].name, users[2].age, users[2].email);
+        const dev1 = new Developer(users[0], users[0].age, ["TypeScript"]);
+        const dev2 = new Developer(users[1], users[1].age, ["JavaScript"]);
+        const manager = new Manager(users[2], users[2].age, Department.IT, 5);
 
-        this.employees.push(dev11, dev22, manager);
+        this.employees.push(dev1, dev2, manager);
       } else {
         console.warn("No hay suficientes usuarios para crear empleados.");
       }
@@ -31,17 +32,20 @@ export class EmployeeService {
       throw error;
     }
   }
-     }
+     
 
      getEmployeeById(id: number): BaseEmployee | undefined {
        // TODO: Buscar empleado por ID
+       return this.employees.find(emp => emp.getId() === id);
      }
 
      getAllEmployees(): BaseEmployee[] {
        // TODO: Retornar todos los empleados
+       return this.employees;
      }
 
      addEmployee(employee: BaseEmployee): void {
        // TODO: Agregar nuevo empleado
+       this.employees.push(employee);
      }
    }

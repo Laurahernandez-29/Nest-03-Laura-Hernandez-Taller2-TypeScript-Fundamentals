@@ -14,7 +14,7 @@ import { EmployeeService } from './services/EmployeeService';
        await employeeService.loadEmployeesFromApi();
 
        // TODO: Mostrar información de todos los empleados
-       const employees = employeeService.getAllEmployees();
+       //const employees = employeeService.getAllEmployees();
 
        console.log("=== SISTEMA DE EMPLEADOS ===");
        // TODO: Mostrar detalles y salarios de cada empleado
@@ -23,4 +23,5 @@ import { EmployeeService } from './services/EmployeeService';
      }
    }
 
+main();
 

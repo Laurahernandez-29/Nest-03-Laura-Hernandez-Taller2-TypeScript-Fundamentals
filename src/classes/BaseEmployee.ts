@@ -7,6 +7,10 @@ export abstract class BaseEmployee {
      protected email: string;
      protected gender: string;
      protected department: Department;
+    
+     getId(): number {
+     return this.id;
+     }
 
      constructor(user: User, id: number, department: Department) {
        // TODO: Implementar constructor
@@ -22,4 +26,6 @@ export abstract class BaseEmployee {
 
      abstract getDetails(): string;
      abstract calculateSalary(): number;
+ 
    }
+   
