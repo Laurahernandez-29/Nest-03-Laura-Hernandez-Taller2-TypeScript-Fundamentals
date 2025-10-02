@@ -3,11 +3,13 @@ import { BaseEmployee } from "./BaseEmployee";
 
 export class Developer extends BaseEmployee {
      private programmingLanguages: string[];
+     private salary: number;
 
      constructor(user: User, id: number, languages: string[]) {
        // TODO: Implementar - siempre será del departamento IT
        super(user,id,Department.IT);
        this.programmingLanguages = languages;
+       this.salary = this.calculateSalary();
      }
 
      getDetails(): string {
@@ -21,5 +23,9 @@ export class Developer extends BaseEmployee {
        const baseSalary = 3000;
        const bonusLanguage = 200;
        return baseSalary + this.programmingLanguages.length * bonusLanguage;
+     }
+
+     getsalary():number{
+      return this.salary;
      }
   }
